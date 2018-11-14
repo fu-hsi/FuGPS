@@ -90,7 +90,7 @@ public:
 
     byte getFieldCount() const;
 
-    // E.g. GRRMC
+    // E.g. GPRMC
     const char * getMessageId();
 
     // E.g. RMC
@@ -99,7 +99,7 @@ public:
     // Based on GGA and RMC messages data
     bool hasFix();
 
-    // Checks if module still sends valid data (no matter what message) 
+    // Checks whether module still sends valid data (no matter what message)
     bool isAlive(unsigned int timeout = 10000);
 
     // Checks if we have valid NMEA message (see isAlive())
