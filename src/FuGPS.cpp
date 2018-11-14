@@ -206,6 +206,8 @@ void FuGPS::process()
         if (*pString == ',')
         {
             *pString = '\0';
+            if (_tokensCount >= FUGPS_MAX_TOKENS - 1) break;
+
             _tokens[_tokensCount++] = pStart;
             pStart = pString + 1;
         }
