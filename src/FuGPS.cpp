@@ -93,6 +93,11 @@ const char * FuGPS::getField(byte index)
     }    
 }
 
+byte FuGPS::getFieldCount() const
+{
+    return _tokensCount;
+}
+
 bool FuGPS::hasFix()
 {
     return _fix;

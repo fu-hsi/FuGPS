@@ -88,6 +88,8 @@ public:
     // Comma separated fields (Zero-based numbering)
     const char * getField(byte index);
 
+    byte getFieldCount() const;
+
     // E.g. GRRMC
     const char * getMessageId();
 
