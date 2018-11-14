@@ -56,7 +56,7 @@
 class FuGPS
 {
 private:
-    const Stream & _stream;
+    Stream & _stream;
 
     char _currentBuff[FUGPS_NMEA_BUFFER_LENGTH + 1];
     char _sentenceBuff[FUGPS_NMEA_BUFFER_LENGTH + 1];
@@ -77,7 +77,7 @@ public:
     static unsigned int rmc_counter;
 #endif
 
-    FuGPS(const Stream & _stream);
+    FuGPS(Stream & _stream);
 
     static byte checksum(const char * sentence);
     static void parseDateTime(float data, byte & val1, byte & val2, byte & val3);

@@ -12,7 +12,7 @@ unsigned int FuGPS::gga_counter = 0;
 unsigned int FuGPS::rmc_counter = 0;
 #endif
 
-FuGPS::FuGPS(const Stream & _stream) :
+FuGPS::FuGPS(Stream & _stream) :
     _stream(_stream), _state(0), _tokensCount(0), _fix(false), _lastRead(0),
     Quality(0), Satellites(0), Accuracy(0), Altitude(0), Latitude(0), Longitude(0), Speed(0), Course(0)
 {
