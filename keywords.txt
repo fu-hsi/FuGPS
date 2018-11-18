@@ -17,6 +17,7 @@ parseDateTime   KEYWORD2
 toDecimal       KEYWORD2
 sendCommand     KEYWORD2
 getField        KEYWORD2
+getFieldCount   KEYWORD2
 getMessageId    KEYWORD2
 getSentenceId   KEYWORD2
 hasFix          KEYWORD2
