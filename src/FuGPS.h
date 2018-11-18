@@ -45,6 +45,7 @@
 // Uncomment for debug
 // #define FUGPS_DEBUG
 
+// From larryd, Arduino Forum
 #ifdef FUGPS_DEBUG
 #define DPRINT(...)   Serial.print(__VA_ARGS__)
 #define DPRINTLN(...) Serial.println(__VA_ARGS__)
