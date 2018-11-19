@@ -137,7 +137,9 @@ I tested on that I had, it means GY-NEO6MV2 and below modules.
 | Arduino Pro or Pro Mini w/ ATmega328P (3.3V, 8 MHz) | YES   |
 | Arduino Pro or Pro Mini w/ ATmega328P (5V, 16 MHz)  | YES   |
 | ESP8266                                             | YES   | WeMos D1 mini.<br>I had to implemenent my own strsep() function.
-| ESP32                                               | ?     | Waiting for shipment from AliExpress ;-)
+| ESP32                                               | YES   | DOIT ESP32 DEVKIT V1
+
+*My library support  also ESP8266 and ESP32, but referenced libraries don't have to!*
 
 ## Developing
 I would rather not complicate the library by adding too many functionalities.  
