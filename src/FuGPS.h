@@ -9,7 +9,7 @@
 #define _FUGPS_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
-#include "arduino.h"
+#include "Arduino.h"
 #else
 #include "WProgram.h"
 #endif
@@ -45,6 +45,7 @@
 // Uncomment for debug
 // #define FUGPS_DEBUG
 
+// From larryd, Arduino Forum
 #ifdef FUGPS_DEBUG
 #define DPRINT(...)   Serial.print(__VA_ARGS__)
 #define DPRINTLN(...) Serial.println(__VA_ARGS__)
@@ -56,7 +57,7 @@
 class FuGPS
 {
 private:
-    const Stream & _stream;
+    Stream & _stream;
 
     char _currentBuff[FUGPS_NMEA_BUFFER_LENGTH + 1];
     char _sentenceBuff[FUGPS_NMEA_BUFFER_LENGTH + 1];
@@ -77,7 +78,7 @@ public:
     static unsigned int rmc_counter;
 #endif
 
-    FuGPS(const Stream & _stream);
+    FuGPS(Stream & _stream);
 
     static byte checksum(const char * sentence);
     static void parseDateTime(float data, byte & val1, byte & val2, byte & val3);
@@ -88,7 +89,9 @@ public:
     // Comma separated fields (Zero-based numbering)
     const char * getField(byte index);
 
-    // E.g. GRRMC
+    byte getFieldCount() const;
+
+    // E.g. GPRMC
     const char * getMessageId();
 
     // E.g. RMC
@@ -97,7 +100,7 @@ public:
     // Based on GGA and RMC messages data
     bool hasFix();
 
-    // Checks if module still sends valid data (no matter what message) 
+    // Checks whether module still sends valid data (no matter what message)
     bool isAlive(unsigned int timeout = 10000);
 
     // Checks if we have valid NMEA message (see isAlive())

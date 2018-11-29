@@ -12,7 +12,7 @@ unsigned int FuGPS::gga_counter = 0;
 unsigned int FuGPS::rmc_counter = 0;
 #endif
 
-FuGPS::FuGPS(const Stream & _stream) :
+FuGPS::FuGPS(Stream & _stream) :
     _stream(_stream), _state(0), _tokensCount(0), _fix(false), _lastRead(0),
     Quality(0), Satellites(0), Accuracy(0), Altitude(0), Latitude(0), Longitude(0), Speed(0), Course(0)
 {
@@ -91,6 +91,11 @@ const char * FuGPS::getField(byte index)
     {
         return nullptr;
     }    
+}
+
+byte FuGPS::getFieldCount() const
+{
+    return _tokensCount;
 }
 
 bool FuGPS::hasFix()
@@ -201,6 +206,8 @@ void FuGPS::process()
         if (*pString == ',')
         {
             *pString = '\0';
+            if (_tokensCount >= FUGPS_MAX_TOKENS - 1) break;
+
             _tokens[_tokensCount++] = pStart;
             pStart = pString + 1;
         }
