@@ -28,6 +28,17 @@ byte FuGPS::checksum(const char * sentence)
     return checksum;
 }
 
+void FuGPS::parseDateTime(float value, byte & val1, byte & val2, float & val3)
+{
+    val1 = (int)(value / 10000);
+    value -= val1 * 10000.0;
+
+    val2 = (int)(value / 100);
+    value -= val2 * 100.0;
+
+    val3 = value;
+}
+
 void FuGPS::parseDateTime(float value, byte & val1, byte & val2, byte & val3)
 {
     val1 = (int)(value / 10000);
@@ -239,7 +250,7 @@ void FuGPS::process()
 #ifdef FUGPS_DEBUG
         rmc_counter++;
 #endif
-        float time = atoi(_tokens[1]);
+        float time = atof(_tokens[1]);
         parseDateTime(time, Hours, Minutes, Seconds);
 
         _fix = *_tokens[2] == 'A';
@@ -262,7 +273,7 @@ void FuGPS::process()
 #ifdef FUGPS_DEBUG
         gga_counter++;
 #endif
-        float time = atoi(_tokens[1]);
+        float time = atof(_tokens[1]);
         parseDateTime(time, Hours, Minutes, Seconds);
 
         Latitude = atof(_tokens[2]);
