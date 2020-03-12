@@ -82,6 +82,7 @@ public:
 
     static byte checksum(const char * sentence);
     static void parseDateTime(float data, byte & val1, byte & val2, byte & val3);
+    static void parseDateTime(float data, byte & val1, byte & val2, float & val3);
     static float toDecimal(float coordinate, char coordinateRef);
 
     void sendCommand(const char* command);
@@ -109,7 +110,8 @@ public:
     // Reads one char (non blocking)
     bool read();
 
-    byte Hours, Minutes, Seconds;
+    byte Hours, Minutes;
+    float Seconds;
     byte Days, Months, Years;
 
     // Fix Quality
